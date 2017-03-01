@@ -1,33 +1,21 @@
 package com.huihui.mat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        LeakThread mLeakThread=new LeakThread();
-
-        mLeakThread.start();
-
-
     }
 
-    private class LeakThread extends Thread {
+    @Override
+    public void onClick(View v) {
 
-        @Override
-        public void run() {
-            super.run();
-
-            try {
-                Thread.sleep(10000* 3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+        startActivity(new Intent(getApplicationContext(), SecondActivity.class));
     }
 }
